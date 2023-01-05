@@ -19,7 +19,7 @@ describe("fizzbuzz", () => {
   });
 
   //la mejor opcion que ka de arriba
-  it("should render array of sheep with letter 'n' and 'a' and color red", () => {
+  it("should render array of sheep with letter 'n' and 'a' and color red includes", () => {
     const ovejasFiltradas = OVEJAS.filter(
       (oveja) =>
         oveja.color.includes("rojo") &&
