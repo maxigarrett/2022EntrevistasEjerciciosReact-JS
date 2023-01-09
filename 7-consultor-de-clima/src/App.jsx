@@ -52,7 +52,7 @@ function App() {
     console.log(city);
   };
 
-  if (isPending === false) return <div>Cargando...</div>;
+  if (isPending === false) return <div>Loadin.....</div>;
 
   return (
     <main className="App">

@@ -1,6 +1,8 @@
 // here is the petition to the weather API
 const API_KEY_WEATHER = "6713f88729f0d339f633899c02f57f8c";
 
+export const kelvinToCelcius = (temp) => Math.round(temp - 273.15);
+
 export const api = {
   weather: {
     fetch: async (city) => {
@@ -191,8 +193,8 @@ export const api = {
           name: city.name,
         },
         forecast: response.list.map((forecast) => ({
-          max: Math.round(forecast.main.temp_max - 273.15),
-          min: Math.round(forecast.main.temp_min - 273.15),
+          max: kelvinToCelcius(forecast.main.temp_max),
+          min: kelvinToCelcius(forecast.main.temp_min),
         })),
       };
     },
