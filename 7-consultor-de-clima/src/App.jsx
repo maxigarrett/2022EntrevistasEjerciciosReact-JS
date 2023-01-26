@@ -47,7 +47,7 @@ function App() {
   }, [city]);
 
   const handelCity = (event) => {
-    // console.log(event.target.value);
+    console.log(event.target.value);
     setcity(CITIES[event.target.value]);
     console.log(city);
   };

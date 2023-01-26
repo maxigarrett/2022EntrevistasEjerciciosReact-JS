@@ -2,7 +2,19 @@
 const API_KEY_WEATHER = "6713f88729f0d339f633899c02f57f8c";
 
 export const kelvinToCelcius = (temp) => Math.round(temp - 273.15);
-
+//funcion exportada para testeo
+export const formatWeather = (weather) => {
+  return {
+    city: {
+      id: weather.city.id,
+      name: weather.city.name,
+    },
+    forecast: response.list.map((forecast) => ({
+      max: kelvinToCelcius(forecast.main.temp_max),
+      min: kelvinToCelcius(forecast.main.temp_min),
+    })),
+  };
+};
 export const api = {
   weather: {
     fetch: async (city) => {

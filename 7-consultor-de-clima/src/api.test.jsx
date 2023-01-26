@@ -1,6 +1,6 @@
 import { screen, cleanup, render } from "@testing-library/react";
 import { afterEach, describe, expect, it } from "vitest";
-import { kelvinToCelcius } from "./api";
+import { kelvinToCelcius, formatWeather } from "./api";
 
 describe("api js", () => {
   afterEach(cleanup);
