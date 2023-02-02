@@ -27,6 +27,11 @@ function App() {
     setWinner(null);
   };
 
+  //si estan todas las casillas llenas pero no hay ganador
+  const checkEndGame = (newBoard) => {
+    return newBoard.every((square) => square !== null);
+  };
+
   const checkWinner = (boardToCheck) => {
     //revisamos todas las combinaciones ganadoras para ver si X u O gano
     for (let combo of WINNER_COMBOS) {
@@ -53,7 +58,7 @@ function App() {
     const newBoard = [...board];
 
     //si no existe agregamos. si ay existe solo que actualice con lo que ya habia
-    if (!newBoard[idx]) newBoard[idx] = turn;
+    if (!newBoard[idx] || !winner) newBoard[idx] = turn;
     else setBoard(newBoard);
 
     setBoard(newBoard);
@@ -61,7 +66,11 @@ function App() {
     const newWinner = checkWinner(newBoard);
     if (newWinner) {
       setWinner(newWinner);
-    } //ha hacer: chequear empate
+      console.log(newWinner);
+    } //ha hacer: chequear empate y que tire false
+    else if (checkEndGame(newBoard)) {
+      setWinner(false);
+    }
 
     // forma mas simple de hacerlo
     // turn === TURNS.X ? setTurn(TURNS.O) : setTurn(TURNS.X);
@@ -91,6 +100,7 @@ function App() {
             <h2>{winner === false ? "Empate" : "Gano"}</h2>
             <header className="win">
               {winner && <Square>{winner}</Square>}
+              {!winner && <Square className="square-empate">🤬</Square>}
             </header>
 
             <button onClick={restarGame}> restar</button>
